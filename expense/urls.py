@@ -18,10 +18,12 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from users import views as user_views
 
 urlpatterns = [
-    path('', include('home.urls')),
-    path('admin/', admin.site.urls),
+    path('', include('home.urls'), name='home'),
+    path('register/', user_views.register, name='register'),
+    path('admin/', admin.site.urls, name= 'admin'),
 ]
 
 if settings.DEBUG:
