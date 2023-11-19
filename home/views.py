@@ -25,3 +25,7 @@ def home(request):
 
     context = {'profile' : profile , 'expenses' : expenses}
     return render(request , 'home.html' , context)
+
+@login_required
+def profile(request):
+    return render(request, 'profile.html')

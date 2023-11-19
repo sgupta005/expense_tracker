@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+        <h2>SpendWise</h2>
+    
+    </div>
+    {% load crispy_forms_tags %}
+    {% block content %}
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <div class="media-body">
+            <div class="balance">
+                <h4>Name: {{user.username}} </h4>
+                <h4>Email: {{user.email}}</h4>
+                <h4>Your Balance</h4>
+                <h1 id="balance">&#x20B9;{{user.profile.balance}}</h1>
+                <div class="inc-exp-container">
+                    <div class="income">
+                        <h4>Income</h4>
+                        <p id="money-plus" class="money plus">+&#x20B9;{{user.profile.income}}</p>
+                    </div>
+                    <div class="expense">
+                        <h4>Expense</h4>
+                        <p id="money-minus" class="money minus">-&#x20B9;{{user.profile.expenses}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <!-- FORM HERE -->
+    </div>
+{% endblock content %}
+    
+</body>
+</html>
+
+<style>
+    body{
+        background-color: rgb(227, 230, 235);
+        /* margin: 20px; */
+    }
+    .content-section {
+        width: 40%; /* Set a width for the div */
+        margin: 20px auto;
+        background: #ffffff;
+        padding: 10px 20px;
+        border: 1px solid #dddddd;
+        border-radius: 3px;
+        margin-bottom: 20px;
+    }
+    .header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 100px;
+    padding: 20px;
+    border-bottom: 3px solid #2a3a46;
+    background-color: #4c5c68;
+    color: #b0e4db;
+}
+.money.plus {
+  color: #2ecc71;
+}
+
+.money.minus {
+  color: #c0392b;
+}
+</style>
+
+
