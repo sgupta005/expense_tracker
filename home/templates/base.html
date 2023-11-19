@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -18,21 +19,81 @@
 * {
   box-sizing: border-box;
 }
-
 body {
-  background-color: #f7f7f7;
+  background-color: rgb(227, 230, 235);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  margin: 0;
+  margin: 0px;
+  margin-top: -20px;
   font-family: 'Lato', sans-serif;
 }
 
+.header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 100px;
+    padding: 20px;
+    border-bottom: 3px solid #2a3a46;
+    background-color: #4c5c68;
+    color: #b0e4db;
+}
+.header h2{
+    padding-top: 10px;
+    font-size: 60px;
+    font-family: 'Varela Round', sans-serif;
+}
+
 .container {
-  margin: 30px auto;
-  width: 350px;
+  /* margin: 30px auto; */
+  width: 80%;
+}
+.transaction-and-balance{
+  margin-top: 20px;
+  /* height: 400px; */
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  column-gap: 40px;
+}
+.transaction {
+  flex: 0.5;
+}
+.transaction h3{
+  margin: 0px;
+  font-size: 30px;
+}
+
+.balance{
+  margin-top: 22px;
+  flex: 1;
+}
+.balance h4, .balance h1{
+  text-align: center;
+}
+.balance h4{
+  font-size: 20px;
+}
+#text , #amount{
+  margin-top: 10px;
+  border-radius: 5px;
+}
+.history h3{
+  font-size: 30px;
+}
+.amount-type{
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.amount-type select{
+  height: 30px;
 }
 
 h1 {
@@ -43,7 +104,7 @@ h1 {
 h3 {
   border-bottom: 1px solid #bbb;
   padding-bottom: 10px;
-  margin: 40px 0 10px;
+  /* margin: 0 10px; */
 }
 
 h4 {
@@ -52,21 +113,25 @@ h4 {
 }
 
 .inc-exp-container {
+  height: 200px;
   background-color: #fff;
   box-shadow: var(--box-shadow);
   padding: 20px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin: 20px 0;
 }
-
+.inc-exp-container .expense{
+  margin-top: 20px;
+}
 .inc-exp-container > div {
   flex: 1;
   text-align: center;
 }
 
 .inc-exp-container > div:first-of-type {
-  border-right: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
 }
 
 .money {
@@ -100,14 +165,14 @@ input[type='number'] {
 
 .btn {
   cursor: pointer;
-  background-color: #9c88ff;
-  box-shadow: var(--box-shadow);
-  color: #fff;
-  border: 0;
-  display: block;
+  font-family: 'Varela Round', sans-serif;
+  margin-top: 25px;
+  border-radius: 5px;
+  border: 3px solid black;
   font-size: 16px;
-  margin: 10px 0 30px;
-  padding: 10px;
+  background-color: #4c5c68;
+  color: #b0e4db;
+  height: 40px;
   width: 100%;
 }
 
