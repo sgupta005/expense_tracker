@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import *
 from django.contrib.auth.decorators import login_required
+from users.forms import ProfileUpdateForm, UserUpdateForm
 
 @login_required
 def home(request):
@@ -15,10 +16,9 @@ def home(request):
         expense.save()
         
         if expense_type == 'Positive':
-            profile.balance += float(amount)
+            profile.income += float(amount)
         else:
             profile.expenses += float(amount)
-            profile.balance -= float(amount)
             
         profile.save()
         return redirect('/')
@@ -28,4 +28,22 @@ def home(request):
 
 @login_required
 def profile(request):
-    return render(request, 'profile.html')
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST,
+                                   request.FILES,
+                                   instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            return redirect('profile')
+
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+
+    context = {
+        'u_form': u_form,
+        'p_form': p_form
+    }
+    return render(request, 'profile.html',context)

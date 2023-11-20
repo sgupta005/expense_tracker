@@ -13,20 +13,16 @@
     </div>
     {% load crispy_forms_tags %}
     {% block content %}
+
     <div class="content-section">
       <div class="media">
         <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
         <div class="media-body">
             <div class="balance">
-                <h4>Name: {{user.username}} </h4>
-                <h4>Email: {{user.email}}</h4>
+                <h2>{{user.username}} </h2>
                 <h4>Your Balance</h4>
                 <h1 id="balance">&#x20B9;{{user.profile.balance}}</h1>
                 <div class="inc-exp-container">
-                    <div class="income">
-                        <h4>Income</h4>
-                        <p id="money-plus" class="money plus">+&#x20B9;{{user.profile.income}}</p>
-                    </div>
                     <div class="expense">
                         <h4>Expense</h4>
                         <p id="money-minus" class="money minus">-&#x20B9;{{user.profile.expenses}}</p>
@@ -35,7 +31,19 @@
             </div>
         </div>
       </div>
-      <!-- FORM HERE -->
+      <form method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <!-- <legend class="border-bottom mb-4">Join Today</legend> -->
+            {{ u_form|crispy }}
+            {{ p_form|crispy }}
+            
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Update</button>
+        </div>
+    </form>
     </div>
 {% endblock content %}
     
@@ -48,7 +56,7 @@
         /* margin: 20px; */
     }
     .content-section {
-        width: 40%; /* Set a width for the div */
+        width: 40%; 
         margin: 20px auto;
         background: #ffffff;
         padding: 10px 20px;
